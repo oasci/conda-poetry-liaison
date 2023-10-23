@@ -1,0 +1,88 @@
+[tool.poetry]
+name = "conda-poetry-liaison"
+version = "0.1.0"
+description = "Make conda and poetry communicate"
+authors = [
+    "OASCI <us@oasci.org>",
+]
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.scripts]
+cpl-deps = "conda-poetry-liaison.deps:main"
+cpl-clean = "conda-poetry-liaison.clean:main"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+tomli = "^2.0.1"
+tomli_w = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.12.0"
+black = "^23.10.0"
+pre-commit = "^3.5.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.2"
+
+[build-system]
+requires = [
+    "poetry-core",
+]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+# https://github.com/psf/black
+target-version = ["py38"]
+line-length = 88
+color = true
+
+exclude = '''
+/(
+    \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | env
+    | venv
+)/
+'''
+
+
+[tool.isort]
+# https://github.com/timothycrosley/isort/
+py_version = 38
+line_length = 88
+
+known_typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
+sections = ["FUTURE", "TYPING", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+profile = "black"
+include_trailing_comma = true
+multi_line_output = 3
+indent = 4
+color_output = true
+skip = [
+  '.bzr',
+  '.direnv',
+  '.eggs',
+  '.git',
+  '.hg',
+  '.mypy_cache',
+  '.nox',
+  '.pants.d',
+  '.svn',
+  '.tox',
+  '.venv',
+  '__pypackages__',
+  '_build',
+  'buck-out',
+  'build',
+  'dist',
+  'node_modules',
+  'venv',
+]
