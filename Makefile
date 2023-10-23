@@ -1,7 +1,10 @@
 SHELL := /usr/bin/env bash
-PACKAGE_NAME := conda-poetry-liaison
+PACKAGE_NAME := conda_poetry_liaison
 
-# notify_poetry_of_conda.py
+.PHONY: poetry-download
+poetry-download:
+	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | $(PYTHON) -
+
 .PHONY: pre-commit-install
 pre-commit-install:
 	poetry run pre-commit install
@@ -27,3 +30,7 @@ codestyle:
 
 .PHONY: formatting
 formatting: codestyle
+
+.PHONY: build
+build:
+	poetry build

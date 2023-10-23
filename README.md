@@ -1,3 +1,3 @@
-# conda-poetry-liaison
+# conda_poetry_liaison
 
 TODO:

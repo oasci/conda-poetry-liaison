@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "conda-poetry-liaison"
+name = "conda_poetry_liaison"
 version = "0.1.0"
 description = "Make conda and poetry communicate"
 authors = [
@@ -9,8 +9,8 @@ readme = "README.md"
 license = "MIT"
 
 [tool.poetry.scripts]
-cpl-deps = "conda-poetry-liaison.deps:main"
-cpl-clean = "conda-poetry-liaison.clean:main"
+cpl-deps = "conda_poetry_liaison.deps:main"
+cpl-clean = "conda_poetry_liaison.clean:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -21,9 +21,6 @@ tomli_w = "^1.0.0"
 isort = "^5.12.0"
 black = "^23.10.0"
 pre-commit = "^3.5.0"
-
-[tool.poetry.group.test.dependencies]
-pytest = "^7.4.2"
 
 [build-system]
 requires = [
