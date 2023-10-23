@@ -11,14 +11,17 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
+  pypi-publish:
     name: testpypi
     runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/conda_poetry_liaison
+    permissions:
+        id-token: write
 
     steps:
     - uses: actions/checkout@v4
-      with:
-          fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v4
