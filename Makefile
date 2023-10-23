@@ -3,7 +3,7 @@ PACKAGE_NAME := conda_poetry_liaison
 
 .PHONY: poetry-download
 poetry-download:
-	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+	curl -sSL https://install.python-poetry.org/ | python -
 
 .PHONY: pre-commit-install
 pre-commit-install:
