@@ -15,7 +15,6 @@ def check_if_include_package(conda_str):
 
 
 def run_notify(toml_path, env_name=None, env_path=None, group_name="conda", save=True):
-
     command = ["conda", "run"]
     if env_path is not None:
         command.extend(["-p", env_path])
