@@ -1,9 +1,9 @@
-name: Upload Python Package TestPyPI
+name: Upload Python Package PyPI
 
 on:
   push:
-    branches:
-    - main
+    tags:
+      - '*'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -12,11 +12,11 @@ permissions:
 
 jobs:
   pypi-publish:
-    name: testpypi
+    name: pypi
     runs-on: ubuntu-latest
     environment:
-      name: "testpypi"
-      url: https://test.pypi.org/p/conda_poetry_liaison
+      name: pypi
+      url: https://pypi.org/p/conda_poetry_liaison
     permissions:
       id-token: write
 
@@ -37,7 +37,5 @@ jobs:
     - name: Build package
       run: make build
 
-    - name: Publish package to TestPyPI
+    - name: Publish package to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        repository-url: https://test.pypi.org/legacy/
