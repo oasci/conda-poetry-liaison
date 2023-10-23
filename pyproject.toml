@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "conda_poetry_liaison"
-version = "0.1.0"
+version = "0.0.0"
 description = "Make conda and poetry communicate"
 authors = [
     "OASCI <us@oasci.org>",
@@ -16,17 +16,24 @@ cpl-clean = "conda_poetry_liaison.clean:main"
 python = "^3.8"
 tomli = "^2.0.1"
 tomli_w = "^1.0.0"
+poetry-dynamic-versioning = "^1.1.0"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.12.0"
 black = "^23.10.0"
 pre-commit = "^3.5.0"
 
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+dirty = true
+
 [build-system]
 requires = [
-    "poetry-core",
+    "poetry-core>=1.0.0",
+    "poetry-dynamic-versioning>=1.0.0,<2.0.0"
 ]
-build-backend = "poetry.core.masonry.api"
+build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.black]
 # https://github.com/psf/black

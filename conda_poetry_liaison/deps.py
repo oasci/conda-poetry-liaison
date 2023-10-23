@@ -17,10 +17,10 @@ def check_if_include_package(conda_str):
 def run_notify(toml_path, env_name=None, env_path=None, group_name="conda", save=True):
 
     command = ["conda", "run"]
-    if (env_path is not None) or (env_path != ""):
-        command.extend("-p", env_path)
-    elif (env_name is not None) or (env_path != ""):
-        command.extend("-n", env_name)
+    if env_path is not None:
+        command.extend(["-p", env_path])
+    elif env_name is not None:
+        command.extend(["-n", env_name])
     else:
         raise ValueError("Both env_name and env_path cannot be None")
     command.extend(["pip", "list"])
@@ -44,7 +44,6 @@ def run_notify(toml_path, env_name=None, env_path=None, group_name="conda", save
             continue
         package_name, package_version = conda_package.strip().split()
         toml_file[conda_group_label][package_name] = f"^{package_version}"
-
     if save:
         with open(toml_path, "wb") as f:
             tomli_w.dump(toml_file, f)
@@ -64,14 +63,14 @@ def main():
         "--env_name",
         type=str,
         nargs="?",
-        default="",
+        default=None,
         help="Name of conda environment to probe",
     )
     parser.add_argument(
         "--env_path",
         type=str,
         nargs="?",
-        default="",
+        default=None,
         help="Path of conda environment to probe",
     )
     parser.add_argument(

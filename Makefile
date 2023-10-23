@@ -4,6 +4,7 @@ PACKAGE_NAME := conda_poetry_liaison
 .PHONY: poetry-download
 poetry-download:
 	curl -sSL https://install.python-poetry.org/ | python -
+	poetry self add "poetry-dynamic-versioning[plugin]"
 
 .PHONY: pre-commit-install
 pre-commit-install:
