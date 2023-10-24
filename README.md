@@ -1,10 +1,34 @@
-# conda_poetry_liaison
+<h1 align="center">conda_poetry_liaison</h1>
+
+<h4 align="center">Make conda and poetry communicate</h4>
+
+<p align="center">
+    <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/conda_poetry_liaison">
+    <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/conda_poetry_liaison">
+    <a href="https://github.com/oasci/conda-poetry-liaison/blob/main/LICENSE" target="_blank">
+        <img src="https://img.shields.io/github/license/oasci/conda-poetry-liaison" alt="License">
+    </a>
+    <a href="https://github.com/oasci/conda-poetry-liaison/" target="_blank">
+        <img src="https://img.shields.io/github/repo-size/oasci/conda-poetry-liaison" alt="GitHub repo size">
+    </a>
+    <a href="https://github.com/psf/black" target="_blank">
+        <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Black style">
+    </a>
+</p>
 
 > Do not use another package manager in a conda environment.
 
 Many are given this advice, but we do this anyway.
 We want our conda-only packages with the awesome features of [poetry](https://python-poetry.org/).
 `conda_poetry_liaison` is a small collection of scripts to make this as painless and reproducible as possible.
+
+## Installation
+
+You can install `conda_poetry_liaison` with pip.
+
+```bash
+pip install conda_poetry_liaison
+```
 
 ## Scripts
 
