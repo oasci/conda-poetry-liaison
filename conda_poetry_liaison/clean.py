@@ -9,7 +9,11 @@ def run_cleaning(env_path):
         raise TypeError(f"env_path should be a string, not {type(env_path)}")
     direct_url_paths = get_files(env_path, "direct_url.json")
     for path in direct_url_paths:
-        os.remove(path)
+        try:
+            os.remove(path)
+        except FileNotFoundError:
+            # Due to symlinks we often have repeated files.
+            pass
 
 
 def main():
