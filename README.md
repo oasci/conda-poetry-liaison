@@ -77,3 +77,16 @@ Install all pre-commits.
 ```bash
 make pre-commit-install
 ```
+
+## Deploying
+
+A note to maintainers.
+
+We use [bump2version](https://github.com/c4urself/bump2version) to release a new `major`, `minor`, or `patch` version.
+This will update the tracked version in `.bumpversion.cfg`, modify the `CHANGELOG`, and create a new tag.
+
+After releasing a new version, you need to push and include all tags.
+
+```bash
+git push --follow-tags
+```
