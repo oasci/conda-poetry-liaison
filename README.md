@@ -109,6 +109,12 @@ A note to maintainers.
 We use [bump2version](https://github.com/c4urself/bump2version) to release a new `major`, `minor`, or `patch` version.
 This will update the tracked version in `.bumpversion.cfg`, modify the `CHANGELOG`, and create a new tag.
 
+For example, to bump the `minor` version you would run the following command.
+
+```bash
+poetry run bump2version minor
+```
+
 After releasing a new version, you need to push and include all tags.
 
 ```bash
