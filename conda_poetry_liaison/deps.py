@@ -41,8 +41,10 @@ def run_notify(toml_path, env_name=None, env_path=None, group_name="conda", save
     for conda_package in conda_packages:
         if not check_if_include_package(conda_package):
             continue
-        package_name, package_version = conda_package.strip().split()
-        toml_file[conda_group_label][package_name] = f"^{package_version}"
+        conda_package_split = conda_package.strip().split()
+        toml_file[conda_group_label][
+            conda_package_split[0]
+        ] = f"^{conda_package_split[1]}"
     if save:
         with open(toml_path, "wb") as f:
             tomli_w.dump(toml_file, f)
