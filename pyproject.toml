@@ -31,6 +31,12 @@ current_version = "0.0.2"
 tag = true
 commit = true
 
+[[tool.bumpversion.files]]
+filename = "CHANGELOG.md"
+no_regex = false
+search = "\\[Unreleased\\]"
+replace = "[Unreleased]\n\n## [{new_version}] - {now:%Y-%m-%d}"
+
 [tool.poetry-dynamic-versioning]
 enable = true
 vcs = "git"
