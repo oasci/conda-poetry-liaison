@@ -39,7 +39,7 @@ formatting:
 check-codestyle:
 	poetry run isort --diff --check-only --settings-path pyproject.toml $(PACKAGE_NAME)
 	poetry run black --diff --check --config pyproject.toml $(PACKAGE_NAME)
-	-poetry run pylint $(PACKAGE_NAME)
+	-poetry run pylint --rcfile pyproject.toml $(PACKAGE_NAME)
 
 .PHONY: mypy
 mypy:

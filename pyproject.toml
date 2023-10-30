@@ -60,6 +60,63 @@ build-backend = "poetry_dynamic_versioning.backend"
 [tool.mypy]
 python_version = "3.9"
 
+[tool.pylint.messages_control]
+# https://pylint.readthedocs.io/en/latest/
+good-names = [
+  "i",
+  "j",
+  "k",
+  "e",
+  "_",
+  "Z",
+  "z",
+  "R",
+  "r",
+  "E",
+  "e",
+  "G",
+  "g",
+  "F",
+  "f",
+  "n",
+  "Q",
+  "q",
+  "d",
+  "v",
+  "ex",
+]
+ignore = ["CVS", "conf.py"]
+jobs = 0
+py-version = 3.9
+argument-naming-style = "snake_case"
+attr-naming-style = "snake_case"
+class-const-naming-style = "UPPER_CASE"
+class-naming-style = "PascalCase"
+const-naming-style = "UPPER_CASE"
+function-naming-style = "snake_case"
+disable = [
+  "raw-checker-failed",
+  "bad-inline-option",
+  "locally-disabled",
+  "file-ignored",
+  "suppressed-message",
+  "useless-suppression",
+  "deprecated-pragma",
+  "use-symbolic-message-instead",
+  "too-many-arguments",
+  "too-many-public-methods",
+  "missing-module-docstring",
+  "missing-function-docstring",
+  "too-many-lines",
+  "fixme",
+  "too-many-instance-attributes",
+  "too-few-public-methods",
+  "too-many-locals",
+  "attribute-defined-outside-init",
+  "broad-except",
+  "import-error"
+]
+
 [tool.black]
 # https://github.com/psf/black
 target-version = ["py39"]
@@ -94,7 +151,7 @@ profile = "black"
 include_trailing_comma = true
 multi_line_output = 3
 indent = 4
-color_output = true
+color_output = false
 skip = [
   '.bzr',
   '.direnv',
