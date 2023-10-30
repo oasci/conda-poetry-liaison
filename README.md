@@ -106,13 +106,13 @@ make pre-commit-install
 
 A note to maintainers.
 
-We use [bump2version](https://github.com/c4urself/bump2version) to release a new `major`, `minor`, or `patch` version.
-This will update the tracked version in `.bumpversion.cfg`, modify the `CHANGELOG`, and create a new tag.
+We use [bump-my-version](https://github.com/callowayproject/bump-my-version) to release a new version.
+This will create a git tag that is used by [poetry-dynamic-version](https://github.com/mtkennerly/poetry-dynamic-versioning) to generate version strings and update `CHANGELOG.md`.
 
 For example, to bump the `minor` version you would run the following command.
 
 ```bash
-poetry run bump2version minor
+poetry run bump-my-version bump minor
 ```
 
 After releasing a new version, you need to push and include all tags.

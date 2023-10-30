@@ -13,7 +13,7 @@ cpl-deps = "conda_poetry_liaison.deps:main"
 cpl-clean = "conda_poetry_liaison.clean:main"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 tomli = "^2.0.1"
 tomli_w = "^1.0.0"
 poetry-dynamic-versioning = "^1.1.0"
@@ -23,6 +23,13 @@ isort = "^5.12.0"
 black = "^23.10.0"
 pre-commit = "^3.5.0"
 bump2version = "^1.0.1"
+mypy = "^1.6.1"
+bump-my-version = "^0.11.0"
+
+[tool.bumpversion]
+current_version = "0.0.2"
+tag = true
+commit = true
 
 [tool.poetry-dynamic-versioning]
 enable = true
@@ -50,9 +57,12 @@ requires = [
 ]
 build-backend = "poetry_dynamic_versioning.backend"
 
+[tool.mypy]
+python_version = "3.9"
+
 [tool.black]
 # https://github.com/psf/black
-target-version = ["py38"]
+target-version = ["py39"]
 line-length = 88
 color = true
 
@@ -75,7 +85,7 @@ exclude = '''
 
 [tool.isort]
 # https://github.com/timothycrosley/isort/
-py_version = 38
+py_version = 39
 line_length = 88
 
 known_typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]

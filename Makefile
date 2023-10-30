@@ -19,18 +19,38 @@ poetry-lock:
 .PHONY: install
 install:
 	poetry install --no-interaction
+	- mkdir .mypy_cache
+	- poetry run mypy --install-types --non-interactive --explicit-package-bases $(PACKAGE_NAME)
 
 .PHONY: validate
 validate:
 	poetry run pre-commit run --all-files
 
-.PHONY: codestyle
-codestyle:
+.PHONY: formatting
+formatting:
 	poetry run isort --settings-path pyproject.toml ./
 	poetry run black --config pyproject.toml ./
 
-.PHONY: formatting
-formatting: codestyle
+
+
+###   LINTING   ###
+
+.PHONY: check-codestyle
+check-codestyle:
+	poetry run isort --diff --check-only --settings-path pyproject.toml $(PACKAGE_NAME)
+	poetry run black --diff --check --config pyproject.toml $(PACKAGE_NAME)
+	-poetry run pylint $(PACKAGE_NAME)
+
+.PHONY: mypy
+mypy:
+	poetry run mypy --config pyproject.toml -p $(PACKAGE_NAME)
+
+.PHONY: lint
+lint: check-codestyle mypy
+
+
+
+###   BUILD   ###
 
 .PHONY: build
 build:
