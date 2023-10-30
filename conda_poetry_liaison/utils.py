@@ -59,7 +59,6 @@ def get_conda_env_path(env_name: str) -> str:
     conda_envs = results.stdout
     for line in conda_envs.split("\n"):
         line_split = line.strip().split()
-        print(line_split)
         if line_split[0] == env_name:
             env_path = line_split[-1]
             return env_path

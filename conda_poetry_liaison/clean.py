@@ -13,7 +13,8 @@ def run_cleaning(
     if env_path is None:
         if isinstance(env_name, str):
             env_path = get_conda_env_path(env_name)
-        raise ValueError("Both env_name and env_path cannot be None")
+        else:
+            raise ValueError("Both env_name and env_path cannot be None")
     direct_url_paths = get_files(env_path, "direct_url.json")
     for path in direct_url_paths:
         try:
