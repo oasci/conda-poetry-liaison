@@ -4,6 +4,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- `cpl-clean` can take environment path or name.
+
 ### Fixed
 
 - Splitting conda package name and versions.

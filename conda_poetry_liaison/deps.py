@@ -1,3 +1,5 @@
+from typing import Union
+
 import argparse
 import subprocess
 
@@ -5,7 +7,7 @@ import tomli
 import tomli_w
 
 
-def check_if_include_package(conda_str):
+def check_if_include_package(conda_str: str) -> bool:
     r"""Checks if we should include a package in pyproject.toml"""
     if "" == conda_str.strip():
         return False
@@ -14,7 +16,13 @@ def check_if_include_package(conda_str):
     return True
 
 
-def run_notify(toml_path, env_name=None, env_path=None, group_name="conda", save=True):
+def run_notify(
+    toml_path: str,
+    env_name: Union[str, None] = None,
+    env_path: Union[str, None] = None,
+    group_name: str = "conda",
+    save=True,
+):
     command = ["conda", "run"]
     if env_path is not None:
         command.extend(["-p", env_path])

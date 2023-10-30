@@ -65,15 +65,16 @@ There seems to be a remnant of `direct_url.json` files from conda package instal
 One workaround is to delete these files in the conda environment directory before using poetry.
 
 ```text
-usage: cpl-clean [-h] [env_path]
+usage: cpl-clean [-h] [--env_name [ENV_NAME]] [--env_path [ENV_PATH]]
 
 Notify poetry of conda Python packages
 
-positional arguments:
-  env_path    Path of conda environment to clean
-
 options:
-  -h, --help  show this help message and exit
+  -h, --help            show this help message and exit
+  --env_name [ENV_NAME]
+                        Name of conda environment to probe
+  --env_path [ENV_PATH]
+                        Path of conda environment to probe
 ```
 
 ## Development

@@ -1,12 +1,19 @@
+from typing import Union
+
 import argparse
 import os
 
-from .utils import get_files
+from .utils import get_conda_env_path, get_files
 
 
-def run_cleaning(env_path):
-    if not isinstance(env_path, str):
-        raise TypeError(f"env_path should be a string, not {type(env_path)}")
+def run_cleaning(
+    env_name: Union[str, None] = None,
+    env_path: Union[str, None] = None,
+) -> None:
+    if env_path is None:
+        if isinstance(env_name, str):
+            env_path = get_conda_env_path(env_name)
+        raise ValueError("Both env_name and env_path cannot be None")
     direct_url_paths = get_files(env_path, "direct_url.json")
     for path in direct_url_paths:
         try:
@@ -17,17 +24,26 @@ def run_cleaning(env_path):
 
 
 def main():
+    # pylint: disable=duplicate-code
     parser = argparse.ArgumentParser(
         description="Notify poetry of conda Python packages"
     )
     parser.add_argument(
-        "env_path",
+        "--env_name",
         type=str,
         nargs="?",
-        help="Path of conda environment to clean",
+        default=None,
+        help="Name of conda environment to probe",
+    )
+    parser.add_argument(
+        "--env_path",
+        type=str,
+        nargs="?",
+        default=None,
+        help="Path of conda environment to probe",
     )
     args = parser.parse_args()
-    run_cleaning(args.env_path)
+    run_cleaning(env_name=args.env_name, env_path=args.env_path)
 
 
 if __name__ == "__main__":
