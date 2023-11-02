@@ -30,6 +30,46 @@ You can install `conda_poetry_liaison` with pip.
 pip install conda_poetry_liaison
 ```
 
+## Example
+
+Create and activate a conda environment.
+For this example, we are creating an environment named `sunshine`.
+
+```bash
+conda create -y -n sunshine python=3.11 && conda activate test-env
+```
+
+Install the following required packages.
+
+```bash
+conda install -y -c conda-forge poetry pre-commit tomli tomli-w \
+pip install conda_poetry_liaison
+```
+
+**NOTE:** We are waiting for the [conda-forge recipe](https://github.com/conda-forge/conda-poetry-liaison-feedstock) for `conda_poetry_liaison` to build.
+For the time being, the only way to install it is with `pip`.
+
+Install your desired packages; for example, suppose you want `numpy`, `scipy`, and `matplotlib`.
+
+```bash
+conda install -y -c conda-forge numpy scipy matplotlib
+```
+
+Update the `tool.poetry.group.conda.dependencies` group in your `pyproject.toml` with the `cpl-deps` script.
+
+```bash
+cpl-deps pyproject.toml --env_name sunshine
+```
+
+Cleanup your conda environment with `cpl-clean` before switching to using poetry exclusively.
+
+```bash
+cpl-clean --env_name sunshine
+```
+
+Now you are good to go!
+For example, you can run `poetry install` to install all poetry-managed PyPI packages in `pyproject.toml`.
+
 ## Scripts
 
 ### `cpl-deps`
@@ -121,3 +161,12 @@ After releasing a new version, you need to push and include all tags.
 ```bash
 git push --follow-tags
 ```
+
+## License
+
+Code contained in this project is released under the [MIT License](https://spdx.org/licenses/MIT.html) as specified in [`LICENSE`][license].
+This license grants you the freedom to use, modify, and distribute it as long as you include the original copyright notice contained in [`LICENSE`][license] and the following disclaimer.
+
+> Portions of this code were incorporated and adapted with permission from [conda-poetry-liaison](https://github.com/oasci/conda-poetry-liaison) by OASCI under the [MIT License](https://github.com/oasci/conda-poetry-liaison/blob/main/LICENSE).
+
+[license]: https://github.com/oasci/conda-poetry-liaison/blob/main/LICENSE
