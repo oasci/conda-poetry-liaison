@@ -36,7 +36,7 @@ Create and activate a conda environment.
 For this example, we are creating an environment named `sunshine`.
 
 ```bash
-conda create -y -n sunshine python=3.11 && conda activate test-env
+conda create -y -n sunshine python=3.11 && conda activate sunshine
 ```
 
 Install the following required packages.
