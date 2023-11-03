@@ -27,7 +27,7 @@ def run_cleaning(
 def main():
     # pylint: disable=duplicate-code
     parser = argparse.ArgumentParser(
-        description="Notify poetry of conda Python packages"
+        description="Clean up the conda environment for use with poetry"
     )
     parser.add_argument(
         "--env_name",

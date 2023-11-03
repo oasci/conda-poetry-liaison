@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - A `make refresh` command to automate virtual environment creation.
 
+### Fixed
+
+- `cpl-clean` description was incorrect.
+
 ### Changed
 
 - Removed `poetry-dynamic-versioning` as a package dependency.

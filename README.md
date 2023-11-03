@@ -3,16 +3,34 @@
 <h4 align="center">Make conda and poetry communicate</h4>
 
 <p align="center">
+    <a href="#installation">Installation</a> •
+    <a href="#example">Example</a> •
+    <a href="#scripts">Scripts</a> •
+    <a href="#development">Development</a> •
+    <a href="#deploying">Deploying</a> •
+    <a href="#license">License</a>
+</p>
+
+<p align="center">
     <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/conda_poetry_liaison">
-    <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/conda_poetry_liaison">
+    <a href="https://anaconda.org/conda-forge/conda-poetry-liaison" target="_blank">
+        <img src="https://img.shields.io/conda/vn/conda-forge/conda-poetry-liaison.svg">
+    </a>
+    <img src="https://anaconda.org/conda-forge/conda-poetry-liaison/badges/downloads.svg">
+    <a href="https://anaconda.org/conda-forge/conda-poetry-liaison/files" target="_blank">
+        <img src="https://anaconda.org/conda-forge/conda-poetry-liaison/badges/platforms.svg">
+    </a>
     <a href="https://github.com/oasci/conda-poetry-liaison/blob/main/LICENSE" target="_blank">
-        <img src="https://img.shields.io/github/license/oasci/conda-poetry-liaison" alt="License">
+        <img src="https://img.shields.io/github/license/oasci/conda-poetry-liaison">
     </a>
     <a href="https://github.com/oasci/conda-poetry-liaison/" target="_blank">
-        <img src="https://img.shields.io/github/repo-size/oasci/conda-poetry-liaison" alt="GitHub repo size">
+        <img src="https://img.shields.io/github/repo-size/oasci/conda-poetry-liaison">
     </a>
     <a href="https://github.com/psf/black" target="_blank">
-        <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Black style">
+        <img src="https://img.shields.io/badge/code%20style-black-000000.svg">
+    </a>
+    <a href="https://github.com/conda-forge/conda-poetry-liaison-feedstock" target="_blank">
+        <img src="https://img.shields.io/badge/recipe-conda--poetry--liaison-green.svg">
     </a>
 </p>
 
@@ -24,10 +42,10 @@ We want our conda-only packages with the awesome features of [poetry](https://py
 
 ## Installation
 
-You can install `conda_poetry_liaison` with pip.
+You can install `conda_poetry_liaison` with conda
 
 ```bash
-pip install conda_poetry_liaison
+conda install -c conda-forge conda-poetry-liaison
 ```
 
 ## Example
@@ -42,12 +60,8 @@ conda create -y -n sunshine python=3.11 && conda activate sunshine
 Install the following required packages.
 
 ```bash
-conda install -y -c conda-forge poetry pre-commit tomli tomli-w \
-pip install conda_poetry_liaison
+conda install -y -c conda-forge poetry pre-commit tomli tomli-w conda-poetry-liaison
 ```
-
-**NOTE:** We are waiting for the [conda-forge recipe](https://github.com/conda-forge/conda-poetry-liaison-feedstock) for `conda_poetry_liaison` to build.
-For the time being, the only way to install it is with `pip`.
 
 Install your desired packages; for example, suppose you want `numpy`, `scipy`, and `matplotlib`.
 
@@ -107,7 +121,7 @@ One workaround is to delete these files in the conda environment directory befor
 ```text
 usage: cpl-clean [-h] [--env_name [ENV_NAME]] [--env_path [ENV_PATH]]
 
-Notify poetry of conda Python packages
+Clean up the conda environment for use with poetry
 
 options:
   -h, --help            show this help message and exit
@@ -119,28 +133,38 @@ options:
 
 ## Development
 
+Clone the [GitHub repository](https://github.com/oasci/conda-poetry-liaison).
+
+```bash
+git clone https://github.com/oasci/conda-poetry-liaison && cd conda-poetry-liaison
+```
+
 Install poetry if you do not have it.
 
 ```bash
 make poetry-download
 ```
 
-If you already have poetry installed, make sure you have [poetry-dynamic-versioning](https://github.com/mtkennerly/poetry-dynamic-versioning).
+> [!NOTE]
+> We use the [GNU `make`](https://www.gnu.org/software/make/manual/make.html) tool to help automate these commands.
+> This can be installed on linux with
+>
+> ```bash
+> sudo apt-get install build-essential
+> ```
+>
+> If you cannot install `make`, you can just individually run the commands in the [`Makefile`](https://github.com/oasci/conda-poetry-liaison/blob/main/Makefile).
+
+If you already have poetry installed, ensure you have [poetry-dynamic-versioning](https://github.com/mtkennerly/poetry-dynamic-versioning).
 
 ```bash
 poetry self add "poetry-dynamic-versioning[plugin]"
 ```
 
-Install the package.
+Run the following command to install all dependencies, this package, and pre-commits.
 
 ```bash
-make install
-```
-
-Install all pre-commits.
-
-```bash
-make pre-commit-install
+make refresh
 ```
 
 ## Deploying
@@ -150,13 +174,13 @@ A note to maintainers.
 We use [bump-my-version](https://github.com/callowayproject/bump-my-version) to release a new version.
 This will create a git tag that is used by [poetry-dynamic-version](https://github.com/mtkennerly/poetry-dynamic-versioning) to generate version strings and update `CHANGELOG.md`.
 
-For example, to bump the `minor` version you would run the following command.
+For example, to bump the `minor` version, you would run the following command.
 
 ```bash
 poetry run bump-my-version bump minor
 ```
 
-After releasing a new version, you need to push and include all tags.
+After releasing a new version, you must push and include all tags.
 
 ```bash
 git push --follow-tags
@@ -165,7 +189,7 @@ git push --follow-tags
 ## License
 
 Code contained in this project is released under the [MIT License](https://spdx.org/licenses/MIT.html) as specified in [`LICENSE`][license].
-This license grants you the freedom to use, modify, and distribute it as long as you include the original copyright notice contained in [`LICENSE`][license] and the following disclaimer.
+This license grants you the freedom to use, modify, and distribute it as long as you include the original copyright notice in [`LICENSE`][license] and the following notice.
 
 > Portions of this code were incorporated and adapted with permission from [conda-poetry-liaison](https://github.com/oasci/conda-poetry-liaison) by OASCI under the [MIT License](https://github.com/oasci/conda-poetry-liaison/blob/main/LICENSE).
 
