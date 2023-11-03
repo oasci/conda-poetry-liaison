@@ -22,6 +22,9 @@ install:
 	- mkdir .mypy_cache
 	- poetry run mypy --install-types --non-interactive --explicit-package-bases $(PACKAGE_NAME)
 
+.PHONY: refresh
+refresh: install pre-commit-install
+
 .PHONY: validate
 validate:
 	poetry run pre-commit run --all-files
