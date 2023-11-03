@@ -16,9 +16,9 @@ cpl-clean = "conda_poetry_liaison.clean:main"
 python = "^3.9"
 tomli = "^2.0.1"
 tomli_w = "^1.0.0"
-poetry-dynamic-versioning = "^1.1.0"
 
 [tool.poetry.group.dev.dependencies]
+poetry-dynamic-versioning = "^1.1.0"
 isort = "^5.12.0"
 black = "^23.10.0"
 pre-commit = "^3.5.0"
