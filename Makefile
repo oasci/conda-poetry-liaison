@@ -1,5 +1,6 @@
 SHELL := /usr/bin/env bash
 PACKAGE_NAME := conda_poetry_liaison
+TESTS_PATH := tests/
 
 .PHONY: poetry-download
 poetry-download:
@@ -51,7 +52,10 @@ mypy:
 .PHONY: lint
 lint: check-codestyle mypy
 
-
+###   TEST   ###
+.PHONY: test
+test:
+	poetry run pytest -c pyproject.toml --cov=$(PACKAGE_NAME) --cov-report=xml --junit-xml=report.xml --color=yes $(TESTS_PATH)
 
 ###   BUILD   ###
 
